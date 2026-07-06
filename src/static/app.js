@@ -113,8 +113,7 @@ document.addEventListener("DOMContentLoaded", () => {
     event.preventDefault();
     event.stopPropagation();
 
-    const activityName = event.target.dataset.activity;
-    const email = event.target.dataset.email;
+    const { activity: activityName, email } = event.currentTarget.dataset;
 
     try {
       const response = await fetch(
