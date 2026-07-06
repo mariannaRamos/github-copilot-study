@@ -48,18 +48,20 @@ def clean_activities():
     Use this when you want a clean slate for a test.
     """
     # Reset participants to initial state before the test
-    for activity in activities.values():
-        activity["participants"] = [
-            "michael@mergington.edu", "daniel@mergington.edu"
-        ] if activity.get("description") and "Chess" in activity["description"] else \
-        ["emma@mergington.edu", "sophia@mergington.edu"] if "Programming" in activity.get("description", "") else \
-        ["john@mergington.edu", "olivia@mergington.edu"] if "Gym" in activity.get("description", "") else \
-        ["james@mergington.edu", "lucas@mergington.edu"] if "Basketball" in activity.get("description", "") else \
-        ["sarah@mergington.edu"] if "Tennis" in activity.get("description", "") else \
-        ["grace@mergington.edu", "aiden@mergington.edu"] if "Art" in activity.get("description", "") else \
-        ["noah@mergington.edu", "ava@mergington.edu"] if "Music" in activity.get("description", "") else \
-        ["isabella@mergington.edu"] if "Debate" in activity.get("description", "") else \
-        ["tyler@mergington.edu", "mia@mergington.edu"] if "Science" in activity.get("description", "") else []
+    initial_participants = {
+        "Chess Club": ["michael@mergington.edu", "daniel@mergington.edu"],
+        "Programming Class": ["emma@mergington.edu", "sophia@mergington.edu"],
+        "Gym Class": ["john@mergington.edu", "olivia@mergington.edu"],
+        "Basketball Team": ["james@mergington.edu", "lucas@mergington.edu"],
+        "Tennis Club": ["sarah@mergington.edu"],
+        "Art Studio": ["grace@mergington.edu", "aiden@mergington.edu"],
+        "Music Band": ["noah@mergington.edu", "ava@mergington.edu"],
+        "Debate Club": ["isabella@mergington.edu"],
+        "Science Olympiad": ["tyler@mergington.edu", "mia@mergington.edu"],
+    }
+
+    for activity_name, activity in activities.items():
+        activity["participants"] = list(initial_participants.get(activity_name, []))
     
     return activities
 
