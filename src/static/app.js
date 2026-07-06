@@ -28,8 +28,8 @@ document.addEventListener("DOMContentLoaded", () => {
         const activityCard = document.createElement("div");
         activityCard.className = "activity-card";
 
-        const spotsLeft = details.max_participants - details.participants.length;
         const participants = details.participants || [];
+        const spotsLeft = details.max_participants - participants.length;
         const participantsMarkup = participants.length
           ? `<ul class="participants-list">${participants
               .map((participant) => `<li><span class="participant-email">${escapeHtml(participant)}</span><button class="delete-btn" data-activity="${escapeHtml(name)}" data-email="${escapeHtml(participant)}" title="Remove participant">🗑</button></li>`)
